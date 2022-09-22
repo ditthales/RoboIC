@@ -35,14 +35,14 @@ https://www.circuitar.com.br/projetos/Rodo-linha/
 // Potencias do motor:
 // Potencia do motor principal quando anda para os lado
 // Este parametro define quao rapido o robo realiza as curvas
-#define potL 150
+#define potL 60
 
 // Potencia do motor secundario quando anda para os lados
 // Este parametro define quao abrupto a robo realiza as curvas
 #define potS 6
 
 // Potencia quando o robo anda para frente
-#define potF 150
+#define potF 50
 
 // Valor de referencia da LINHA a ser seguida (adquirido pelos sensores)
 #define linha 500
@@ -66,48 +66,43 @@ void setup() {
 
 void loop() {
   
-  int s1=digitalRead(2);
-  //sensor();
-  //Serial.println(distancia);
-  
-//  if (distancia < 30){
-//    //desvio();
-//    //delay(500);
-//    control('w');
-//  }else{
-//    seguirPreto(s1);
+  int s1=digitalRead(2); //le se ta no preto ou branco
+  sensor(); //ativa o sensor de distancia
     
-  seguirPreto(s1);
+  if (distancia < 30){    //se achar algum obstaculo a menos de 30cm desvia indo pra esquerda até não achar mais
+    desvio();
+  }else{
+    seguirPreto(s1);       //se não achar ele segue a linha preta
+  }
                
 }
 
 void seguirPreto(int s1){
-  if (s1 == 0){
+  if (s1 == 0){  //se o sensor retornar preto ele anda em frente
     control('w');
     Serial.println("deveria andar pra frente");
-  }else{
-    int parada = 0;
-    int tempo = 10;
-    bool flag = false;
+  }else{   //se nao retornar, faz zigue zague até achar a linha preta novamente, girando pelo próprio eixo e aumentando a amplitude do movimento a cada repetição.
+    int tempo = 10; // variavel que vai dizer quantos ms durará cada virada
+    bool flag = false; //variavel para sair do loop
     while(true){
       Serial.println("deveria fazer zigzag");
-      int s2=digitalRead(2);
-      control('a');
-      for(int i = 0;i<tempo;i++){
+      int s2=digitalRead(2); //leitura do sensor
+      control('a'); //vira a esquerda
+      for(int i = 0;i<tempo;i=i+10){  //durante (tempo) milissegundos
         delay(10);
-        s2 = digitalRead(2);
+        s2 = digitalRead(2); //le novamente o sensor e se achar preto sai do for
         if (s2==0){
            flag = true;
            break;
         }
       }
-      if(flag==true){
+      if(flag==true){ //sai do while se achar preto anteriormente
         break;
       }
-      tempo = tempo + 10;
+      tempo = tempo + 10; //soma +10 ms no tempo
       Serial.println("deveria fazer zigzag");
-      control('d');
-      for(int i = 0;i<tempo;i++){
+      control('d'); //repete tudo para a direita
+      for(int i = 0;i<tempo;i=i+10){
         delay(10);
         s2 = digitalRead(2);
         if (s2==0){
@@ -124,11 +119,11 @@ void seguirPreto(int s1){
   }
 }
 
-void desvio(){
+void desvio(){ //apenas vira a esquerda ate nao achar mais nada
   control('a');
 }
 
-void sensor(){
+void sensor(){ // atribui a variavel distancia o valor de distancia do sensor ultrassonico
   digitalWrite(dist_trig, LOW);
   delayMicroseconds(2);
   digitalWrite(dist_trig, HIGH);
