@@ -1,3 +1,5 @@
+#include <Ultrasonic.h>
+
 /*
 Programa Robo Seguidor de Linha
 Exemplo de como controlar um robo para seguir um caminho no chao
@@ -25,22 +27,29 @@ https://www.circuitar.com.br/projetos/Rodo-linha/
 #define m2B_pin 5
 #define m2C_pin 3
 
+// Sensor Ultrassonico
+#define dist_echo 10
+#define dist_trig 8
+
 
 // Potencias do motor:
 // Potencia do motor principal quando anda para os lado
 // Este parametro define quao rapido o robo realiza as curvas
-#define potL 210
+#define potL 150
 
 // Potencia do motor secundario quando anda para os lados
 // Este parametro define quao abrupto a robo realiza as curvas
 #define potS 6
 
 // Potencia quando o robo anda para frente
-#define potF 115
+#define potF 150
 
 // Valor de referencia da LINHA a ser seguida (adquirido pelos sensores)
 #define linha 500
 
+int distancia;
+
+Ultrasonic ultrasonic(dist_trig,dist_echo);
 
 void setup() {
   // Inicializa os pinos dos motores como saida
@@ -50,15 +59,82 @@ void setup() {
   pinMode(m2A_pin, OUTPUT);
   pinMode(m2B_pin, OUTPUT);
   pinMode(m2C_pin, OUTPUT);
+  pinMode(dist_echo, INPUT);
+  pinMode(dist_trig, OUTPUT);
+  Serial.begin(9600);
 }
 
 void loop() {
-  // Adquire os valores do sensor esquerdo e direito (portas A0 e A1)
-  int s1=analogRead(2);
-  control('w');
-  delay(3000);
-  control('s');
-  delay(3000);             
+  
+  int s1=digitalRead(2);
+  //sensor();
+  //Serial.println(distancia);
+  
+//  if (distancia < 30){
+//    //desvio();
+//    //delay(500);
+//    control('w');
+//  }else{
+//    seguirPreto(s1);
+    
+  seguirPreto(s1);
+               
+}
+
+void seguirPreto(int s1){
+  if (s1 == 0){
+    control('w');
+    Serial.println("deveria andar pra frente");
+  }else{
+    int parada = 0;
+    int tempo = 10;
+    bool flag = false;
+    while(true){
+      Serial.println("deveria fazer zigzag");
+      int s2=digitalRead(2);
+      control('a');
+      for(int i = 0;i<tempo;i++){
+        delay(10);
+        s2 = digitalRead(2);
+        if (s2==0){
+           flag = true;
+           break;
+        }
+      }
+      if(flag==true){
+        break;
+      }
+      tempo = tempo + 10;
+      Serial.println("deveria fazer zigzag");
+      control('d');
+      for(int i = 0;i<tempo;i++){
+        delay(10);
+        s2 = digitalRead(2);
+        if (s2==0){
+           flag = true;
+           break;
+        }
+      }
+      if(flag==true){
+        break;
+      }
+      tempo = tempo + 10;
+      
+    }
+  }
+}
+
+void desvio(){
+  control('a');
+}
+
+void sensor(){
+  digitalWrite(dist_trig, LOW);
+  delayMicroseconds(2);
+  digitalWrite(dist_trig, HIGH);
+  delayMicroseconds(2);
+  digitalWrite(dist_trig, LOW);
+  distancia = (ultrasonic.Ranging(CM));
 }
 
 //Funcao que controla os motores
@@ -89,16 +165,16 @@ void control(char dir){
            digitalWrite(m1A_pin, HIGH);
            digitalWrite(m1B_pin, LOW);
            analogWrite(m1C_pin, potL);
-           analogWrite(m2C_pin, potS);
-           digitalWrite(m2A_pin, HIGH);
-           digitalWrite(m2B_pin, LOW);
+           analogWrite(m2C_pin, potL);
+           digitalWrite(m2A_pin, LOW);
+           digitalWrite(m2B_pin, HIGH);
            break;
               
        //Anda para esquerda
        case 'a':
-           digitalWrite(m1A_pin, HIGH);
-           digitalWrite(m1B_pin, LOW);
-           analogWrite(m1C_pin, potS);
+           digitalWrite(m1A_pin, LOW);
+           digitalWrite(m1B_pin, HIGH);
+           analogWrite(m1C_pin, potL);
            analogWrite(m2C_pin, potL);
            digitalWrite(m2A_pin, HIGH);
            digitalWrite(m2B_pin, LOW);
