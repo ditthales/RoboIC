@@ -79,6 +79,11 @@ void move_robot_zig_zag_until_find_line_path()
 
     robot_found_line_path = did_robot_find_line_path(turn_duration);
 
+    if (robot_found_line_path)
+    {
+      break;
+    }
+
     turn_duration += 10;
 
     move_robot_to_right_side();
