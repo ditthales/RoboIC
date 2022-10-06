@@ -1,8 +1,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://www.hexagonmi.com/-/media/Images/Hexagon/Hexagon%20MI/Solutions/Industries/Electronics/Integrated%20circuits%20and%20components.ashx?h=428&w=800&la=pt-BR&hash=3F97A7CD48F0044ED27893B324978112">
-    <img src="https://www.hexagonmi.com/-/media/Images/Hexagon/Hexagon%20MI/Solutions/Industries/Electronics/Integrated%20circuits%20and%20components.ashx?h=428&w=800&la=pt-BR&hash=3F97A7CD48F0044ED27893B324978112" alt="Logo" width="900" height="300">
+  <a href="https://img.freepik.com/fotos-premium/os-semicondutores-e-transistores-usados-na-placa-de-circuito-conceito-da-industria-de-computadores_63762-7252.jpg">
+    <img src="http://storage.ning.com/topology/rest/1.0/file/get/1979594059?profile=RESIZE_1024x1024" alt="Logo" height="300">
   </a>
 
   <h3 align="center">Line Follower Robot code project</h3>
