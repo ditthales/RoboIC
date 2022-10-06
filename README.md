@@ -38,6 +38,8 @@
 <td align="center"><a href="https://github.com/LucasTorres96"><img src="https://avatars.githubusercontent.com/u/84953349?v=4" width="100px;" alt=""/><br /><sub><b>Lucas Torres</b></sub></a><br/></td>
 
 <td align="center"><a href="https://github.com/Shellyda"><img src="https://avatars.githubusercontent.com/u/69990297?v=4" width="100px;" alt=""/><br /><sub><b>Shellyda Barbosa</b></sub></a><br/></td>
+    
+<td align="center"><a href="https://github.com/stelanascimento"><img src="https://avatars.githubusercontent.com/u/53984571?v=4" width="100px;" alt=""/><br /><sub><b>Stela Nascimento</b></sub></a><br/></td>
 
 <td align="center"><a href="https://github.com/ditthales"><img src="https://avatars.githubusercontent.com/u/88944010?v=4" width="100px;" alt=""/><br /><sub><b>Thales</b></sub></a><br/></td>
 </tr>
@@ -66,12 +68,13 @@
 #### Upload root file code into Arduino to move your robot in one line path
 
 ## Contact
-- Antônio Lucena
-- Karol Rocha
-- Lucas Torres
-- Stela
-- Shellyda Barbosa 
+- Antônio Lucena - avbl@cin.ufpe.br
+- Karol Rocha 
+- Lucas Torres - ljat@cin.ufpe.br
+- Stela Nascimento - snon@cin.ufpe.br
+- Shellyda Barbosa - sfsb2@cin.ufpe.br
 - Thales 
+- Thais Neves - tns2@cin.ufpe.br
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
