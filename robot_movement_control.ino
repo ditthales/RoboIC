@@ -1,5 +1,3 @@
-#include <Ultrasonic.h>
-
 /*
 Line Follower Robot Program - CIn UFPE | September 2022
 */
@@ -15,11 +13,9 @@ Line Follower Robot Program - CIn UFPE | September 2022
 #define ULTRASOUND_SENSOR_DIST_ECHO 10
 #define ULTRASOUND_SENSOR_DIST_TRIG 8
 
-Ultrasonic ultrasonic(ULTRASOUND_SENSOR_DIST_TRIG, ULTRASOUND_SENSOR_DIST_ECHO);
-
-#define PRINCIPAL_ENGINE_POTENCIAL 60
+#define PRINCIPAL_ENGINE_POTENCIAL 80
 #define SECUNDARY_ENGINE_POTENCIAL 6
-#define ENGINE_POTENCIAL_WALKING_TO_FRONT_MOVEMENT 50
+#define ENGINE_POTENCIAL_WALKING_TO_FRONT_MOVEMENT 100
 
 #define LINE_TO_BE_FOLLOWED 500
 
@@ -35,7 +31,7 @@ void setup()
 void set_pins_configuration()
 {
   pinMode(LEFT_ENGINE_M1A_PIN, OUTPUT);
-  pinMode(LEFT_ENGINE_M1B_PIN OUTPUT);
+  pinMode(LEFT_ENGINE_M1B_PIN, OUTPUT);
   pinMode(LEFT_ENGINE_M1C_PIN, OUTPUT);
   pinMode(RIGHT_ENGINE_M2A_PIN, OUTPUT);
   pinMode(RIGHT_ENGINE_M2B_PIN, OUTPUT);
@@ -46,26 +42,27 @@ void set_pins_configuration()
 
 void loop()
 {
-  set_robot_distance_from_obstacles_in_path();
-
-  if (is_robot_too_near_to_obstacle())
+  if (is_robot_in_right_path())
   {
-    move_robot_to_left_side();
+    follow_line_path();
   }
   else
   {
-    follow_line_path();
+    move_robot_to_right_side();
   }
 }
 
 void follow_line_path()
 {
-  if (is_robot_in_right_path())
-  {
-    return move_robot_to_front();
-  }
+  stop_robot_movements();
 
-  return move_robot_zig_zag_until_find_line_path();
+  delay(30);
+
+  move_robot_to_left_side();
+
+  delay(30);
+
+  move_robot_to_front();
 }
 
 void move_robot_zig_zag_until_find_line_path()
@@ -111,17 +108,15 @@ bool did_robot_find_line_path(int turn_duration)
 
 bool is_robot_in_right_path()
 {
-  bool is_sensor_ground_vision_black_color = digitalRead(2) == 0;
-
-  return is_sensor_ground_vision_black_color;
+  return digitalRead(2) == 0;
 }
 
 void set_robot_distance_from_obstacles_in_path()
 {
   activate_ultrasound_sensors();
 
-  robot_distance_from_obstacles = (ultrasonic.Ranging(CM));
-}
+/*   robot_distance_from_obstacles = (ultrasonic.Ranging(CM));
+ */}
 
 void activate_ultrasound_sensors()
 {
@@ -141,63 +136,62 @@ bool is_robot_too_near_from_obstacle()
 
 void move_robot_to_left_side()
 {
-  digitalWrite(LEFT_ENGINE_M1A_PIN, LOW);
-  digitalWrite(LEFT_ENGINE_M1B_PIN HIGH);
 
-  analogWrite(LEFT_ENGINE_M1C_PIN, PRINCIPAL_ENGINE_POTENCIAL);
-  analogWrite(RIGHT_ENGINE_M2C_PIN, PRINCIPAL_ENGINE_POTENCIAL);
-
-  digitalWrite(RIGHT_ENGINE_M2A_PIN, HIGH);
+  digitalWrite(RIGHT_ENGINE_M2A_PIN, LOW);
   digitalWrite(RIGHT_ENGINE_M2B_PIN, LOW);
+
+  analogWrite(LEFT_ENGINE_M1C_PIN, 70);
+
+  digitalWrite(LEFT_ENGINE_M1B_PIN, HIGH);
+  digitalWrite(LEFT_ENGINE_M1A_PIN, LOW);
 }
 
 void move_robot_to_right_side()
 {
-  digitalWrite(LEFT_ENGINE_M1A_PIN, HIGH);
-  digitalWrite(LEFT_ENGINE_M1B_PIN LOW);
+  analogWrite(RIGHT_ENGINE_M2C_PIN, 150);
 
-  analogWrite(LEFT_ENGINE_M1C_PIN, PRINCIPAL_ENGINE_POTENCIAL);
-  analogWrite(RIGHT_ENGINE_M2C_PIN, PRINCIPAL_ENGINE_POTENCIAL);
-
-  digitalWrite(RIGHT_ENGINE_M2A_PIN, LOW);
   digitalWrite(RIGHT_ENGINE_M2B_PIN, HIGH);
+  digitalWrite(RIGHT_ENGINE_M2A_PIN, LOW);
+
+  digitalWrite(LEFT_ENGINE_M1A_PIN, LOW);
+  digitalWrite(LEFT_ENGINE_M1B_PIN, LOW);
 }
 
 void move_robot_to_front()
 {
   digitalWrite(LEFT_ENGINE_M1A_PIN, HIGH);
-  digitalWrite(LEFT_ENGINE_M1B_PIN LOW);
+  digitalWrite(LEFT_ENGINE_M1B_PIN, LOW);
 
-  analogWrite(LEFT_ENGINE_M1C_PIN, ENGINE_POTENCIAL_WALKING_TO_FRONT_MOVEMENT);
+  analogWrite(LEFT_ENGINE_M1C_PIN, 100);
 
   digitalWrite(RIGHT_ENGINE_M2A_PIN, HIGH);
   digitalWrite(RIGHT_ENGINE_M2B_PIN, LOW);
 
-  analogWrite(RIGHT_ENGINE_M2C_PIN, ENGINE_POTENCIAL_WALKING_TO_FRONT_MOVEMENT);
+  analogWrite(RIGHT_ENGINE_M2C_PIN, 200);
 }
 
 void move_robot_to_back()
 {
   digitalWrite(LEFT_ENGINE_M1A_PIN, LOW);
-  digitalWrite(LEFT_ENGINE_M1B_PIN HIGH);
+  digitalWrite(LEFT_ENGINE_M1B_PIN, HIGH);
 
-  analogWrite(LEFT_ENGINE_M1C_PIN, ENGINE_POTENCIAL_WALKING_TO_FRONT_MOVEMENT);
+  analogWrite(LEFT_ENGINE_M1C_PIN, 200);
 
   digitalWrite(RIGHT_ENGINE_M2A_PIN, LOW);
   digitalWrite(RIGHT_ENGINE_M2B_PIN, HIGH);
 
-  analogWrite(RIGHT_ENGINE_M2C_PIN, ENGINE_POTENCIAL_WALKING_TO_FRONT_MOVEMENT);
+  analogWrite(RIGHT_ENGINE_M2C_PIN, 200);
 }
 
 void stop_robot_movements()
 {
-  digitalWrite(LEFT_ENGINE_M1A_PIN, HIGH);
-  digitalWrite(LEFT_ENGINE_M1B_PIN HIGH);
+  digitalWrite(LEFT_ENGINE_M1A_PIN, LOW);
+  digitalWrite(LEFT_ENGINE_M1B_PIN, LOW);
 
-  analogWrite(LEFT_ENGINE_M1C_PIN, ENGINE_POTENCIAL_WALKING_TO_FRONT_MOVEMENT);
+  analogWrite(LEFT_ENGINE_M1C_PIN, 200);
 
-  digitalWrite(RIGHT_ENGINE_M2A_PIN, HIGH);
-  digitalWrite(RIGHT_ENGINE_M2B_PIN, HIGH);
+  digitalWrite(RIGHT_ENGINE_M2A_PIN, LOW);
+  digitalWrite(RIGHT_ENGINE_M2B_PIN, LOW);
 
-  analogWrite(RIGHT_ENGINE_M2C_PIN, ENGINE_POTENCIAL_WALKING_TO_FRONT_MOVEMENT);
+  analogWrite(RIGHT_ENGINE_M2C_PIN, 200);
 }
