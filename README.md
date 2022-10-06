@@ -32,11 +32,14 @@
 
 <table>
   <tr>
-<td align="center"><a href="https://github.com/ditthales"><img src="https://avatars.githubusercontent.com/u/88944010?v=4" width="100px;" alt=""/><br /><sub><b>Thalles</b></sub></a><br/></td>
+  
+ <td align="center"><a href="https://github.com/lucena564"><img src="https://avatars.githubusercontent.com/u/85140867?v=4" width="100px;" alt=""/><br /><sub><b>Antônio Lucena</b></sub></a><br/></td>
+ 
+<td align="center"><a href="https://github.com/LucasTorres96"><img src="https://avatars.githubusercontent.com/u/84953349?v=4" width="100px;" alt=""/><br /><sub><b>Lucas Torres</b></sub></a><br/></td>
 
 <td align="center"><a href="https://github.com/Shellyda"><img src="https://avatars.githubusercontent.com/u/69990297?v=4" width="100px;" alt=""/><br /><sub><b>Shellyda Barbosa</b></sub></a><br/></td>
 
-<td align="center"><a href="https://github.com/LucasTorres96"><img src="https://avatars.githubusercontent.com/u/84953349?v=4" width="100px;" alt=""/><br /><sub><b>Lucas Torres</b></sub></a><br/></td>
+<td align="center"><a href="https://github.com/ditthales"><img src="https://avatars.githubusercontent.com/u/88944010?v=4" width="100px;" alt=""/><br /><sub><b>Thales</b></sub></a><br/></td>
 </tr>
  </table>
 
@@ -61,9 +64,12 @@ At root file
 ```
 
 ## Contact
-- Shellyda Barbosa - sfsb2cin.ufpe.br
-- Thalles 
+- Antônio Lucena
+- Karol Rocha
 - Lucas Torres
+- Stela
+- Shellyda Barbosa 
+- Thales 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
