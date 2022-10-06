@@ -58,10 +58,12 @@
   git clone https://github.com/ditthales/RoboIC.git
 ```
 
-At root file
+#### Go to Root file
 ```sh
   /robot_movement_control.ino
 ```
+
+#### Upload root file code into Arduino to move your robot in one line path
 
 ## Contact
 - Antônio Lucena
