@@ -35,6 +35,8 @@
   
  <td align="center"><a href="https://github.com/lucena564"><img src="https://avatars.githubusercontent.com/u/85140867?v=4" width="100px;" alt=""/><br /><sub><b>Antônio Lucena</b></sub></a><br/></td>
  
+ <td align="center"><a href="https://github.com/karolrocha"><img src="https://avatars.githubusercontent.com/u/64050363?v=4" width="100px;" alt=""/><br /><sub><b>Karolyne Rocha</b></sub></a><br/></td>
+ 
 <td align="center"><a href="https://github.com/LucasTorres96"><img src="https://avatars.githubusercontent.com/u/84953349?v=4" width="100px;" alt=""/><br /><sub><b>Lucas Torres</b></sub></a><br/></td>
 
 <td align="center"><a href="https://github.com/Shellyda"><img src="https://avatars.githubusercontent.com/u/69990297?v=4" width="100px;" alt=""/><br /><sub><b>Shellyda Barbosa</b></sub></a><br/></td>
@@ -42,6 +44,9 @@
 <td align="center"><a href="https://github.com/stelanascimento"><img src="https://avatars.githubusercontent.com/u/53984571?v=4" width="100px;" alt=""/><br /><sub><b>Stela Nascimento</b></sub></a><br/></td>
 
 <td align="center"><a href="https://github.com/ditthales"><img src="https://avatars.githubusercontent.com/u/88944010?v=4" width="100px;" alt=""/><br /><sub><b>Thales</b></sub></a><br/></td>
+</tr>
+
+<td align="center"><a href="https://github.com/thaisnevest"><img src="https://avatars.githubusercontent.com/u/56198772?v=4" width="100px;" alt=""/><br /><sub><b>Thaís Neves</b></sub></a><br/></td>
 </tr>
  </table>
 
@@ -69,12 +74,12 @@
 
 ## Contact
 - Antônio Lucena - avbl@cin.ufpe.br
-- Karol Rocha 
+- Karolyne Rocha - kbr@cin.ufpe.br
 - Lucas Torres - ljat@cin.ufpe.br
 - Stela Nascimento - snon@cin.ufpe.br
 - Shellyda Barbosa - sfsb2@cin.ufpe.br
 - Thales 
-- Thais Neves - tns2@cin.ufpe.br
+- Thaís Neves - tns2@cin.ufpe.br
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
