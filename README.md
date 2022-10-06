@@ -78,7 +78,7 @@
 - Lucas Torres - ljat@cin.ufpe.br
 - Stela Nascimento - snon@cin.ufpe.br
 - Shellyda Barbosa - sfsb2@cin.ufpe.br
-- Thales 
+- Thales - tvgf@academy.cin.ufpe.br
 - Thaís Neves - tns2@cin.ufpe.br
 
 <!-- MARKDOWN LINKS & IMAGES -->
