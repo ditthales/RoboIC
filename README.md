@@ -72,7 +72,7 @@
 
 #### Upload root file code into Arduino to move your robot in one line path
 
-## Vídeo result
+## Video Result
 
 ```sh
   https://www.youtube.com/shorts/XQ7R0-YsjNM
